@@ -1,3 +1,4 @@
+```python
 # Listes : ordrées, mutables, autorisent les éléments dupliqués
 
 ## Liste vide
@@ -281,3 +282,4 @@ myset1.isdisjoint(myset2)
 
 
 d
+```

@@ -881,9 +881,27 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 
 # À FAIRE EN ÉCOUNTANT
 
+# JSON
 
+# Nombres aléatoires
 
+# Décorateurs
 
+# Générateurs
+
+# Threading vs Multiprocessing
+
+# Multithreading
+
+# Multiprocessing
+
+# Arguments de fonction
+
+# L'astérisque(*)
+
+# Shallow vs Deep Copying
+
+# Context Managers
 
 
 

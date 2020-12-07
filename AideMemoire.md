@@ -371,7 +371,132 @@ myset2.issuperset(myset1)
 myset1.isdisjoint(myset2)
 ```
 
-# Strings
+# Strings : ordrés, immuables, texte
+
+## Déclaration
+
+### Déclaration standard
+```python
+mystring = "string"
+```
+
+### Déclaration avec \
+```python
+mystring = 'j\'aime'
+```
+
+### Déclaration avec " ' "
+```python
+mystring = "j'aime"
+```
+
+### Déclaration avec """ - peut avoir un \ pour cancel le retour à la ligne
+```python
+mystring = """Hello
+World"""
+```
+
+## String = liste
+```python
+char = mystring[3]
+char2 = mystring[-2]
+substring = mystring[1:5]
+substring2 = mystring[::-2]
+```
+
+## Addition de strings
+```python
+mystring3 = mystring1 + " " + mystring2
+```
+
+## Enlever les espaces inutiles
+```python
+mystring = mystring.strip()
+```
+
+## Mettre en majuscules
+```python
+mystring.upper()
+```
+
+## Mettre en minuscules
+```python
+mystring.lower()
+```
+
+## Teste si le string commence par
+```python
+mystring.startswith("Hello")
+```
+
+
+## Teste si le string commence par
+```python
+mystring.endswith("Bye")
+```
+
+## Trouve une lettre / string - la première de la liste
+```python
+mystring.find('ob')
+```
+
+## Nombre de lettres de type 'x'
+```python
+mystring.count('x')
+```
+
+## Remplace un texte par un autre
+```python
+mystring.replace("World", "Universe")
+```
+
+## Split un string dans une liste de string - \["je,suis"] -> \["je", "suis"]
+```python
+mystring.split(",")
+```
+
+## Inverse de split - \["On", "est", "bien"] -> \["OnXYestXYbien"] - Beaucoup plus performant de faire un join qu'une boucle for avec += ou autre
+```python
+'XY'.join(my_list)
+```
+
+## Formattage de strings
+
+### %s pour %string | %f pour float | %d pour double | %b pour bool | ...
+```python
+mystring = "string %s" % var
+```
+### %.2 pour avoir 2 nombres après la virgule
+```python
+mystring = "Yass %.2f" % var
+```
+
+### Méthode .format()
+```python
+mystring = "Yass {:.2f} and {}".format(var, var2)
+mystring = f"Yass {var} and {var2}"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

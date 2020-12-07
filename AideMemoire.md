@@ -845,7 +845,7 @@ finally:
 ## Création d'exceptions
 ```python
 class ValueTooSmallError(Exception)
-    def _init_(self, message, value)
+    def __init__(self, message, value)
     self.message = message
     self.value = value
 

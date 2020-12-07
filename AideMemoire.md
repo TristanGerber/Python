@@ -477,65 +477,155 @@ mystring = "Yass {:.2f} and {}".format(var, var2)
 mystring = f"Yass {var} and {var2}"
 ```
 
+# Collections - Librairie : 
 
+## Librairie Counter - Permet de compter diverses choses
 
+### Importation
+```python
+from collections import Counter
+```
 
+### Compte le nombre d'un type d'item - Counter("aaaabbccccc") -> {'a': 4, 'b': 2, 'c': 5}
+```python
+mycounter = Counter(mystring)
+```
 
+### Compte le nombre d'items - Counter("abb").items() -> \[('a', 1), ('b', 2)]
+```python
+mycounter.items()
+```
 
+### Différentes clés - 'a', 'b'
+```python
+mycounter.keys()
+```
 
+### Différentes valeurs - 1, 2
+```python
+mycounter.values()
+```
 
+### Clé qui revient le plus - {'b': 2, 'a': 1}
+```python
+mycounter.most_common(nb_retours)
+```
 
+### Tous les éléments
+```python
+mycounter.elements()
+```
 
+## Librairie namedtuple - Tuple qui a un nom et auquel on peut attribuer des valeurs selon leur position
 
+### Importation
+```python
+from collections import namedtuple
+```
 
+### Création
+```python
+Point = namedtuple('Point', 'x,y')
+```
 
+### Utilisation
+```python
+pt = Point(-1, 4)
+```
 
+## Librairie OrderedDict - Dictionnaire ordré par index
 
+### Importation
+```python
+from collections import OrderedDict
+```
 
+### Création
+```python
+a = OrderedDict()
+```
 
+### Assignation
+```python
+a['new'] = 1
+a['new2'] = 32
+```
 
+## Librairie defaultdict
 
+### Importation
+```python
+from collections import defaultdict
+```
 
+### Création
+```python
+d = defaultdict(int)
+```
 
+### Assignation
+```python
+d['a'] = 1
+d['b'] = 16
+```
 
+## Librairie deque
 
+### Importation
+```python
+from collections import deque
+```
 
+### Création
+```python
+d = deque()
+```
 
+### Ajout
 
+#### Ajout standard - d\[2]
+```python
+d.append(2)
+```
 
+#### Ajout à gauche - d\[3, 2]
+```python
+d.appendleft(3)
+```
 
+#### Méthode extend
+```python
+d.extend(4, 5, 6)
+```
 
+### Méthode extendleft
+```python
+d.extandleft(1, 2, 3)
+```
 
+###  Suppression
 
+#### Suppression standard
+```python
+d.pop()
+```
 
+#### Suppression à gauche
+```python
+d.popleft()
+```
 
+### Méthode clear
+```python
+d.clear()
+```
 
+### Méthode rotate - d\[1, 2, 3, 4] -> d\[2, 3, 4, 1]
+```python
+d.rotate(nb_rotates)
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Itertools - Librairie :
 
 
 

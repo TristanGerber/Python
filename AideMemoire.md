@@ -858,9 +858,26 @@ except ValueTooSmallError as e:
     print(e.message, e.value)
 ```
 
+# Log
 
+## Importation
+```python
+import logging
+```
 
+## Variantes de logging
+```python
+logging.debug("message")
+logging.info("message")
+logging.warning("message")
+logging.error("message")
+logging.critical("message")
+```
 
+## Config de logging
+```python
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datfmt='%m/%d/%Y %H:%M:%S')
+```
 
 
 

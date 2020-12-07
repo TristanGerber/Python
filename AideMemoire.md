@@ -879,7 +879,7 @@ logging.critical("message")
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datfmt='%m/%d/%Y %H:%M:%S')
 ```
 
-
+# À FAIRE EN ÉCOUNTANT
 
 
 

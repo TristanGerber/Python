@@ -815,15 +815,48 @@ sorted(array, key=lambda x: x[1])
 # Trie par le deuxième index
 ```
 
+# Exeptions et Erreurs
 
+## Créer une exception
+```python
+raise Exception('Error')
+```
 
+## Méthode assert()
+```python
+assert (condition), 'message'
+# Si condition est false, alors AssertionError: message
+```
 
+## Try / Except / Else / Finally
+```python
+try:
+    #code
+except ZeroDivisionError as e:
+    print(e)
+except ZeroDivisionError as e:
+    print(e)
+else:
+    print("ok")
+finally:
+    print("cleaning up...")
+```
 
+## Création d'exceptions
+```python
+class ValueTooSmallError(Exception)
+    def _init_(self, message, value)
+    self.message = message
+    self.value = value
 
-
-
-
-
+if(value<5)
+    raise ValueTooSmallError('la valeur est trop petite', value)
+    
+try:
+    #code
+except ValueTooSmallError as e:
+    print(e.message, e.value)
+```
 
 
 

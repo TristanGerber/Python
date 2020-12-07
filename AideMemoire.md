@@ -28,9 +28,10 @@ mylist[-1]
 mylist[-2]
 ```
 
-### Récupère les éléments de 1 à 5 (le dernier est exclu : 2, 3, 4, 5)
+### Récupère les éléments de 1 à 5
 ```python
 a = mylist[1:5]
+# Le dernier est exclu : 2, 3, 4, 5
 ```
 
 ### Depuis le début
@@ -45,14 +46,16 @@ a = mylist[2:]
 
 ### Spécifier des intervalles
 
-#### De l'index 1 à la fin (1, 2, 3, 4, 5, 6, 7, 8, 9)
+#### De l'index 1 à la fin
 ```python
 a = mylist[::1]
+# 1, 2, 3, 4, 5, 6, 7, 8, 9
 ```
 
-#### De l'index 1 à la fin de 2 en 2 (1, 3, 5, 7, 9)
+#### De l'index 1 à la fin de 2 en 2
 ```python
 a = mylist[::2]
+# 1, 3, 5, 7, 9
 ```
 
 #### Dans l'ordre inverse de 1 en 1
@@ -107,9 +110,10 @@ mylist.clear()
 mylist.reverse()
 ```
 
-## Trie la liste (trie la liste même si dans une opération : new = mylist.sort())
+## Trie la liste
 ```python
 mylist.sort()
+# Trie la liste même si dans une opération : new = mylist.sort()
 ```
 
 ## Stocke la liste triée dans une nouvelle liste
@@ -117,9 +121,10 @@ mylist.sort()
 new = sorted(mylist)
 ```
 
-## Ajouter 5 fois le même élément (mylist = 0,0,0,0,0 <==> mylist = [0]*5)
+## Ajouter 5 fois le même élément
 ```python
 mylist = [0] * 5
+# mylist = 0,0,0,0,0 <==> mylist = [0]*5
 ```
 
 ## Concaténation de listes
@@ -134,7 +139,7 @@ new_list = mylist + mylist2
 copy = mylist
 ```
 
-### Si on modifie la copie, l'originale ne change pas0
+### Si on modifie la copie, l'originale ne change pas
 
 #### Méthode copy()
 ```python
@@ -151,9 +156,10 @@ copy = list(mylist)
 copy = mylist[:]
 ```
 
-### Modifier les éléments de la liste à la copie (copy = [1, 4, 9, 16, 25, 36] mylist = [1, 2, 3, 4, 5, 6])
+### Modifier les éléments de la liste à la copie
 ```python
 copy = [i*i for i in mylist]
+# copy = [1, 4, 9, 16, 25, 36] mylist = [1, 2, 3, 4, 5, 6]
 ```
 
 ## Création d'une liste à partir d'un tuple
@@ -282,14 +288,16 @@ mydict = {mytuple: 15}
 myset = set()
 ```
 
-### Création standard (myset = {1, 2, 3, 4} car 1, 3, 2 sont déjà présent dans le set)
+### Création standard
 ```python
 myset = {1, 2, 3, 4, 1, 3, 2}
+# myset = {1, 2, 3, 4} car 1, 3, 2 sont déjà présent dans le set
 ```
 
-### Méthode set() - myset = {e, H, o, l}
+### Méthode set()
 ```python
 myset = set("Hello")
+# myset = {e, H, o, l}
 ```
 
 ### Création d'un set constant
@@ -331,19 +339,22 @@ set.clear()
 return myset1.union(myset2)
 ```
 
-## Intersection de sets - myset1{1, 2, 3, 4}.intersection(myset2{2, 3, 4, 5}) = {2, 3, 4}
+## Intersection de sets
 ```python
-return myset1.intersection(myset2)
+return myset1.intersection(myset2) 
+# myset1{1, 2, 3, 4}.intersection(myset2{2, 3, 4, 5}) = {2, 3, 4}
 ```
 
-## Différence de sets - myset1{1, 2, 3, 4}.difference(myset2{2, 3, 4, 5}) = {5}
+## Différence de sets
 ```python
-return myset1.difference(myset2)
+return myset1.difference(myset2) 
+# myset1{1, 2, 3, 4}.difference(myset2{2, 3, 4, 5}) = {5}
 ```
 
-## Différence symétrique de sets - myset1{1, 2, 3, 4}.difference(myset2{2, 3, 4, 5}) = {1, 5}
+## Différence symétrique de sets
 ```python
-return myset1.symmetric_difference(myset2)
+return myset1.symmetric_difference(myset2) 
+# myset1{1, 2, 3, 4}.difference(myset2{2, 3, 4, 5}) = {1, 5}
 ```
 
 ## Update de sets - addition de 2 sets
@@ -356,19 +367,22 @@ myset1.update(myset2)
 myset1.difference_update(myset2)
 ```
 
-## Vérifie si un set fait partie d'un autre - {1, 2, 3} fait partie de {1, 2, 3, 4}
+## Vérifie si un set fait partie d'un autre
 ```python
-myset1.issubset(myset2)
+myset1.issubset(myset2) 
+# {1, 2, 3} fait partie de {1, 2, 3, 4}
 ```
 
-## Vérifie si un set contient un autre set - {1, 2, 3, 4} est un superset de {1, 2, 3}
+## Vérifie si un set contient un autre set
 ```python
-myset2.issuperset(myset1)
+myset2.issuperset(myset1) 
+# {1, 2, 3, 4} est un superset de {1, 2, 3}
 ```
 
-## Vérifie si un set ne contient rien en lien avec un autre - {1, 2, 3} est disjoint de {4, 5}
+## Vérifie si un set ne contient rien en lien avec un autre
 ```python
-myset1.isdisjoint(myset2)
+myset1.isdisjoint(myset2) 
+# {1, 2, 3} est disjoint de {4, 5}
 ```
 
 # Strings : ordrés, immuables, texte
@@ -450,14 +464,16 @@ mystring.count('x')
 mystring.replace("World", "Universe")
 ```
 
-## Split un string dans une liste de string - \["je,suis"] -> \["je", "suis"]
+## Split un string dans une liste de string
 ```python
 mystring.split(",")
+# ["je,suis"] -> ["je", "suis"]
 ```
 
-## Inverse de split - \["On", "est", "bien"] -> \["OnXYestXYbien"] - Beaucoup plus performant de faire un join qu'une boucle for avec += ou autre
+## Inverse de split - Beaucoup plus performant de faire un join qu'une boucle for avec += ou autre
 ```python
-'XY'.join(my_list)
+'XY'.join(my_list) 
+# ["On", "est", "bien"] -> ["OnXYestXYbien"]
 ```
 
 ## Formattage de strings
@@ -486,14 +502,16 @@ mystring = f"Yass {var} and {var2}"
 from collections import Counter
 ```
 
-### Compte le nombre d'un type d'item - Counter("aaaabbccccc") -> {'a': 4, 'b': 2, 'c': 5}
+### Compte le nombre d'un type d'item
 ```python
 mycounter = Counter(mystring)
+# Counter("aaaabbccccc") -> {'a': 4, 'b': 2, 'c': 5}
 ```
 
-### Compte le nombre d'items - Counter("abb").items() -> \[('a', 1), ('b', 2)]
+### Compte le nombre d'items
 ```python
 mycounter.items()
+# Counter("abb").items() -> [('a', 1), ('b', 2)]
 ```
 
 ### Différentes clés - 'a', 'b'
@@ -506,9 +524,10 @@ mycounter.keys()
 mycounter.values()
 ```
 
-### Clé qui revient le plus - {'b': 2, 'a': 1}
+### Clé qui revient le plus
 ```python
 mycounter.most_common(nb_retours)
+# {'b': 2, 'a': 1}
 ```
 
 ### Tous les éléments
@@ -583,14 +602,16 @@ d = deque()
 
 ### Ajout
 
-#### Ajout standard - d\[2]
+#### Ajout standard
 ```python
 d.append(2)
+# d[2]
 ```
 
-#### Ajout à gauche - d\[3, 2]
+#### Ajout à gauche
 ```python
 d.appendleft(3)
+# d[3, 2]
 ```
 
 #### Méthode extend
@@ -620,12 +641,229 @@ d.popleft()
 d.clear()
 ```
 
-### Méthode rotate - d\[1, 2, 3, 4] -> d\[2, 3, 4, 1]
+### Méthode rotate
 ```python
 d.rotate(nb_rotates)
+# d[1, 2, 3, 4] -> d[2, 3, 4, 1]
 ```
 
 # Itertools - Librairie :
+
+## Librairie product - Fais des calculs avec des tableaux
+
+### Importation
+```python
+from itertools import product
+```
+
+### Addition
+```python
+a = [1, 2]
+b = [3, 4]
+prod = product(a,b, repeat=nb)
+# prod = [(1, 3), (1, 4), (2, 3), (2, 4)]
+```
+
+## Librairie permutations - permet d'afficher toutes les possibilités avec une liste
+
+### Importation
+```python
+from itertools import permutations
+```
+
+### Utilisation
+```python
+a = [1, 2, 3]
+perm = permutations(a)
+# perm = [(1, 2, 3), (1, 3, 2), (2, 3, 1), ...]
+```
+
+### Paramètre de taille
+```python
+a = [1, 2, 3]
+perm = permutations(a, 2)
+# perm = [(1, 2), (1, 3), (2, 3), ...]
+```
+
+## Librairie combinations
+
+### Importation
+```python
+from itertools import combinations
+```
+
+### Utilisation
+```python
+a = [1, 2, 3, 4]
+comb = combinations(a, 2)
+# comb = [(1, 2), (1, 3), (1, 4), ...] - dans l'ordre croissant
+```
+
+## Librairie combinations_with_replacement
+
+### Importation
+```python
+from itertools import combinations_with_replacement
+```
+
+### Utilisation
+```python
+a = [1, 2, 3, 4]
+comb = combinations_with_replacement(a, 2)
+# comb = [(1, 1), (1, 2), (1, 3), ...] - dans l'ordre croissant
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

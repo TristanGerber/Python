@@ -858,6 +858,8 @@ except ValueTooSmallError as e:
     print(e.message, e.value)
 ```
 
+# À FAIRE EN ÉCOUNTANT
+
 # Log
 
 ## Importation
@@ -878,8 +880,6 @@ logging.critical("message")
 ```python
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datfmt='%m/%d/%Y %H:%M:%S')
 ```
-
-# À FAIRE EN ÉCOUNTANT
 
 # JSON
 

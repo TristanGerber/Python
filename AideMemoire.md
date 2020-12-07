@@ -685,7 +685,7 @@ perm = permutations(a, 2)
 # perm = [(1, 2), (1, 3), (2, 3), ...]
 ```
 
-## Librairie combinations
+## Librairie combinations - permet d'afficher toutes les possibilités de combinaison avec une liste
 
 ### Importation
 ```python
@@ -699,7 +699,7 @@ comb = combinations(a, 2)
 # comb = [(1, 2), (1, 3), (1, 4), ...] - dans l'ordre croissant
 ```
 
-## Librairie combinations_with_replacement
+## Librairie combinations_with_replacement - permet d'afficher toutes les possibilités de combinaison avec une liste, en prenant les nombres entre eux également 1-1 2-2
 
 ### Importation
 ```python
@@ -709,34 +709,111 @@ from itertools import combinations_with_replacement
 ### Utilisation
 ```python
 a = [1, 2, 3, 4]
-comb = combinations_with_replacement(a, 2)
-# comb = [(1, 1), (1, 2), (1, 3), ...] - dans l'ordre croissant
+acc = accumulate(a)
+# comb = [(1, 1), (1, 2), (1, 3), ...] - dans l'ordre croissant en prenant les nombres entre eux comme 1-1, 2-2
 ```
 
+## Librairie accumulate
 
+### Importation
+```python
+from itertools import accumulate
+```
 
+### Utilisation
+```python
+a = [1, 2, 3, 4]
+acc = accumulate(a)
+# comb = [1, 3, 6, 10] - dans l'ordre croissant
+```
 
+## Librairie groupby - teste des valeurs selons une clé
 
+### Importation
+```python
+from itertools import groupby
+```
 
+### Utilisation
 
+#### Tests
+```python
+a = [1, 2, 3, 4]
+group_obj = groupby(a, key=lambda x: x<3)
+# True [1, 2]
+# False [3, 4]
+```
 
+#### Groupement
+```python
+a = [{'a': 1, 'b': 2}, {'a': 2, 'b': 2}, {'a': 1, 'b': 4}]
+group_obj = groupby(a, key=lambda x: x['a'])
+# 1 [{'a': 1, 'b': 2}, {'a': 1, 'b': 4}]
+# 2 {'a': 2, 'b': 2}
+```
 
+## Librairie count - compte
 
+### Importation
+```python
+from itertools import count
+```
 
+### Utilisation
+```python
+for i in count(10):
+    # Commence à 10 et compte infiniment
+```
 
+## Librairie cycle - compte en cycle par rapport à une liste
 
+### Importation
+```python
+from itertools import cycle
+```
 
+### Utilisation
+```python
+for i in cycle([1, 2, 3]):
+    # Compte 1, 2, 3, 1, 2, 3, 1, 2, ... infiniment
+```
 
+## Librairie repeat - répète un output un nombre n de fois (si aucun paramètre, infini)
 
+### Importation
+```python
+from itertools import repeat
+```
 
+### Utilisation
+```python
+for i in repeat(1, n):
+    # Commence à 10 et compte infiniment
+```
 
+# Fonctions Lambda
 
+## Création
+```python
+add10 = lambda x: x + 10
+```
 
+## Appel
+```python
+add10(13)
+# Retourne 13 + 10 = 23
+```
 
+## Multiples arguments
+```python
+mult = lambda x,y: x*y
+```
 
-
-
-
+## Méthode embarquée
+```python
+sorted(array, key=lambda x: x[1])
+# Trie par le deuxième index
+```
 
 
 

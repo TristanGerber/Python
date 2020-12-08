@@ -879,6 +879,174 @@ logging.critical("message")
 ## Config de logging
 ```python
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datfmt='%m/%d/%Y %H:%M:%S')
+
+# level=logging.WARNING : si on veut afficher seulement les choses aussi graves qu'un warning
+# format='%(asctime)s - %(name)s - %(levelname)s - %(message)s' : format du string retourné sous forme de "texte ... %(paramètre)string ... "
+# datfmt='%m/%d/%Y %H:%M:%S' : format de la date en string
+```
+
+## Change logging name (root is the default one)
+```python
+# In a new file with the debug name wanted ex: helper.py
+logger = logging.getLogger(__name__)
+
+# In main file
+import helper
+```
+
+## Log file
+
+### StreamHandler - pour afficher
+
+#### Création
+```python
+stream_h = logging.StreamHandler()
+```
+
+### FileHandler - pour stocker dans un fichier
+
+#### Création
+```python
+file_h = logging.FileHandler('file.log')
+```
+
+### Formatter - format stocké sous forme de string pouvant être attribué
+
+#### Création
+```python
+formatter = logging.Formatter('%(name)s . %(levelname)s - %(message)s')
+```
+#### Attribution
+```python
+stream_h.setFormatter(formatter)
+file_h.setFormatter(formatter)
+```
+
+### Méthode addHandler() - permet d'ajouter au logger des handlers qui "l'écoutent"
+```python
+logger.addHandler(stream_h)
+logger.addHandler(file_h)
+
+# Maintenant, si on lance un message
+logger.warning('warninnng')
+logger.error('errrror')
+
+# Le warning et l'erreur s'afficheront dans le log
+# L'erreur sera écrite dans le fichier 'file.log'
+```
+
+## Fichier logging.conf / logging.ini
+
+### Création : créer un fichier nommé logging.conf ou logging.ini
+
+### Importation
+```python
+import logging.config
+```
+
+### Exemple de contenu du fichier (se reférer à la doc pour plus d'infos à ce sujet)
+```ini
+[logger_simpleExample]
+level=DEBUG
+formatter=simpleFormatter
+args=(sys.stdout,)
+```
+
+### Attribution de la config au logger
+```python
+logging.config.fileConfig('logging.conf')
+```
+
+### Récupération d'un logger depuis le fichier
+```python
+logger = logging.getLogger('simpleExample')
+
+# On peut maintenant simplement appeler le log et il sera formaté et aura la config définie
+logger.debug('debuuuuuug')
+```
+
+## Dict Config
+
+### Création : créer un fichier nommé logging.conf ou logging.ini
+
+### Importation
+```python
+import logging.config
+```
+
+### Exemple de contenu du fichier (se reférer à la doc pour plus d'infos à ce sujet)
+```ini
+  file:
+    class : logging.handlers.RotatingFileHandler
+    formatter: precise
+    filename: logconfig.log
+    maxBytes: 1024
+    backupCount: 3
+```
+
+## Logging des Exceptions
+
+### Utilisation standard dans une exception
+```python
+except IndexError as e:
+    logging.error(e)
+```
+
+### Ajout de la stack traceback
+```python
+except IndexError as e:
+    logging.error(e, exc_info=True)
+    
+     # Va afficher la stack avant l'erreur
+```
+
+### Stack traceback avec une exception inconnue
+```python
+except:
+    logging.error("L'erreur est %s", traceback.format_exc())
+    
+# Va logger la stack et le type d'erreur
+```
+
+## RotatingFileHandler - Crée un nouveau fichier de log après avoir atteint une certaine limite et écrase les vieux fichiers par les nouveaux - bien pour les grosses applications
+
+### Importation
+```python
+from logging.handlers import RotatingFileHandler
+```
+
+### Création
+```python
+handler = RotatingFileHandler('app.log', maxBytes=2000, backupCount=5)
+
+# Lorsque le fichier atteint 2kb, alors il crée un nouveau fichier
+# Si beaucoup de messages, alors crée app.log, app.log.1, app.log.2, ..., app.log.5, puis les écrit à nouveau quand arrivé à la fin d'app.log.5
+```
+
+### Attribution
+```python
+logger.addHandler(handler)
+```
+
+
+## TimedRotatingFileHandler - Crée un nouveau fichier de log après une certaine intervalle et écrase les vieux fichiers - bien pour les grosses applications
+
+### Importation
+```python
+from logging.handlers import TimedRotatingFileHandler
+```
+
+### Création
+```python
+handler = TimedRotatingFileHandler('app.log', when='m', interval=3, backupCount=7)
+
+# Crée à toutes les 3 minutes un nouveau fichier
+# Crée app.log."date actuelle", puis les écrit à nouveau quand arrivé à 7 fichiers
+```
+
+### Attribution
+```python
+logger.addHandler(handler)
 ```
 
 # JSON

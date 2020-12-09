@@ -1213,6 +1213,162 @@ mydata = json.loads(mydataJSON, object_hook=decode_user)
 
 # Nombres aléatoires
 
+## Module "Random" - pseudo random, pas sécuritaire
+
+### Importation
+```python
+import random
+```
+
+### Utilisation standard
+```python
+# Retourne un float aléatoire entre 0 et 1
+a = random.random()
+```
+
+### Range spécifique
+
+#### Float
+```python
+# Retourne un float aléatoire entre 1 et 10
+a = random.uniform(1, 10)
+```
+
+#### Int
+```python
+# Retourne un int aléatoire entre 1 et 10
+# 1 et 10 sont inclus
+a = random.randint(1, 10)
+```
+
+#### Int - limite supérieure exclue
+```python
+# Retourne un int aléatoire entre 1 et 10
+# 1 et 10 ne sont pas inclus
+a = random.randrange(1, 10)
+```
+
+### Variante normale : f(x) = σ²  + μ
+```python
+# μ  : 0
+# σ² : 1
+a = random.normalvariante(0, 1)
+```
+
+### Élément aléatoire dans une liste
+```python
+# Retourne un élément de la liste aléatoire
+mylist = list("GABSPEIUFS")
+a = random.choice(mylist)
+```
+
+### Plusieurs éléments aléatoires dans une liste
+```python
+# Retourne trois éléments de la liste aléatoire
+mylist = list("GABSPEIUFS")
+myrandomlist = random.choices(mylist, k=3)
+```
+
+### Mélanger une liste
+```python
+# Retourne la liste dont les éléments sont mélangés aléatoirement
+mylist = list("GABSPEIUFS")
+myshuffledlist = random.shuffle(mylist)
+```
+
+### Méthode random.seed()
+```python
+# Set la seed
+random.seed(1234)
+random.random() # return 0.2651234
+random.random() # return 0.7251235
+
+# Set la seed à nouveau : les opérations seront les mêmes
+random.seed(1234)
+random.random() # return 0.2651234
+random.random() # return 0.7251235
+```
+
+## Module "Secrets" - sécuritaire, utilisé pour mots de passes, clés, ... - plus lent que le module "Random"
+
+### Importation
+```python
+import secrets
+```
+
+### Range spécifique
+
+#### Int - limite supérieure exclue
+```python
+# Retourne un entier en dessous de 10, le 10 est exclu
+a = secrets.randbelow(10)
+```
+
+#### Bits
+```python
+# Retourne un nombre entre 0 et 15
+# Paramètre : nombre de bits -> 1 1 1 1 = 8 + 4 + 2 + 1 = 15
+a = secrets.randbits(4)
+```
+
+### Élément aléatoire dans une liste
+```python
+# Retourne un élément de la liste aléatoire
+mylist = list("GABSPEIUFS")
+a = secrets.choice(mylist)
+```
+
+## Module "Numpy" - pratique pour les tableaux
+
+### Importation
+```python
+# Le "as np" signifie qu'on peut l'appeler sous le nom de np
+import numpy as np
+```
+
+### Création d'un tableau de nombres aléatoires
+
+#### Tableau à une dimension
+```python
+# Retourne un tableau de 3 cases contenant des floats aléatoires entre 0 et 1
+myarray = np.random.rand(3)
+```
+
+#### Tableau à deux dimensions
+```python
+# Retourne un tableau de 3x4 cases contenant des floats aléatoires entre 0 et 1
+myarray = np.random.rand(3, 4)
+```
+
+#### Float
+```python
+# Retourne un tableau de 3x4 cases contenant des floats aléatoires entre 0 et 1
+myarray = np.random.rand(3, 4)
+```
+
+#### Int
+```python
+# Retourne un tableau de 3x4 cases contenant des entiers aléatoires entre 0 et 10
+myarray = np.random.randint(0, 10, (3, 4))
+```
+
+### Mélanger un tableau
+```python
+# Retourne un tableau mélangé
+# La méthode ne mélange que l'index et pas les valeurs
+np.random.shuffle(myarray)
+```
+
+### Méthode numpy.random.seed() - à utiliser à la place de random.seed()
+```python
+# Set la seed
+np.random.rand(3,4)
+
+# Set la seed à nouveau : les opérations seront les mêmes
+np.random.seed(1234)
+np.random.rand(3, 4)
+```
+
 # Décorateurs
 
 # Générateurs

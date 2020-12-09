@@ -1072,10 +1072,10 @@ logger.addHandler(handler)
 }
 ```
 
-## Conversion JSON - Python
+## Conversion des types : JSON - Python
 
 | Python           | JSON             |
-|:-------------    | -------------:   |
+|:---------------- | ----------------:|
 | dict             | object           |
 | list, tuple      | array            |
 | str              | string           |
@@ -1083,6 +1083,133 @@ logger.addHandler(handler)
 | True             | true             |
 | False            | false            |
 | None             | null             |
+
+## Conversion de contenu JSON / Python
+
+### Importation
+```python
+import json
+```
+
+###
+
+### De Python à JSON
+
+#### Création d'un dict de données en Python
+```python
+mydata = {"nom": "Joe", "age": 25, "passions": ["Piano", "Animaux"]}
+```
+
+#### Transformer le dict en string JSON
+```python
+# Formate mydata en string JSON
+mydataJSON = json.dumps(mydata)
+
+# Définit le niveau d'indentation. Si pas affiché, retourne une simple ligne formattée en JSON
+mydataJSON = json.dumps(mydata, indent=4)
+
+# Les fins de lignes seront '; ' et les séparateurs de clés seront '= '
+# En JSON : "nom"= "Joe";
+mydataJSON = json.dumps(mydata, indent=4, separators=('; ', '= '))
+
+# Les clés seront triées par ordre alphabétique
+mydataJSON = json.dumps(mydata, indent=4, separators=('; ', '= '), sort_keys=True)
+```
+
+#### Transformer le dict en fichier json
+```python
+# Ouvre le fichier JSON en "write"
+with open('file.json', 'w') as file:
+    json.dump(mydata, file, indent=4)
+```
+
+### De JSON à Python
+
+#### Transformer un string JSON en dict
+```python
+mydata = json.loads(mydataJSON)
+```
+
+#### Transformer un fichier JSON en dict
+```python
+# Ouvre le fichier JSON en "read"
+with open('file.json', 'r') as file:
+    json.load(file)
+```
+
+### Classe custom
+```python
+class User:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+mydata = User('Joe', 24)
+```
+
+Si on essaie de convertir User en JSON ou du JSON en User, une erreur s'affiche.
+Pour remédier à cela, il faut créer un encodeur pour passer de User à JSON et un décodeur pour passer de JSON à User.
+
+
+
+### Encodeur
+```python
+# Paramètre : user
+def encoder(z):
+    if isinstance(z, User):
+        # Retourne un string formatté en JSON
+        return {'nom': z.nom, 'age': z.age, z.__class__.__name__: True}
+    else:
+        raise TypeError(f"Object of type '{z.__class__.__name__}' is not JSON serializable")
+        
+# Va utiliser notre encodeur par défaut lors de la conversion en JSON
+mydataJSON = json.dumps(mydata, default=encoder)
+```
+
+### Encodeur importé
+
+#### Importation
+```python
+from json import JSONEncoder
+```
+
+#### Implémentation
+```python
+class Encoder(JSONEncoder)
+    def default(self, o):
+        if isinstance(z, User):
+            # Retourne un string formatté en JSON
+            return {'nom': z.nom, 'age': z.age, z.__class__.__name__: True}
+        return JSONEncoder.default(self, o)
+```
+
+#### Appel avec json.dumps()
+```python
+mydataJSON = json.dumps(mydata, clas=Encoder)
+```
+
+#### Appel avec la méthode .encode()
+```python
+mydataJSON = Encoder().encode(mydata)
+```
+
+### Décodeur - passer de JSON à la classe User
+
+#### Implémentation
+```python
+# Le paramètre est un dictionnaire, qui est le format de base de conversion JSON à Python
+# Si le dict contient le nom de la classe User, alors il a bien été converti et on le retourne sous un format de User
+# Sinon, on retourne simplement le dictionnaire
+def decode(dct):
+    if User.__name__ in dct:
+        return User(nom=dct['nom', age=dct['age']])
+    return dct
+```
+
+#### Appel avec json.loads()
+```python
+mydata = json.loads(mydataJSON, object_hook=decode_user)
+```
 
 # Nombres aléatoires
 

@@ -1051,6 +1051,39 @@ logger.addHandler(handler)
 
 # JSON
 
+## Exemple de fichier JSON
+```json
+{
+    "firstName": "Joe",
+    "lastName": "Doe",
+    "hobbies": ["running", "swimming", "singing"],
+    "age": 28,
+    "hasChildren": true,
+    "children": [
+        {
+            "firstName": "Doae",
+            "age": 5
+        },
+        {
+            "firstName": "Joae",
+            "age": 7
+        }
+    ]
+}
+```
+
+## Conversion JSON - Python
+
+| Python           | JSON             |
+|:-------------    | -------------:   |
+| dict             | object           |
+| list, tuple      | array            |
+| str              | string           |
+| int, long, float | number           |
+| True             | true             |
+| False            | false            |
+| None             | null             |
+
 # Nombres aléatoires
 
 # Décorateurs

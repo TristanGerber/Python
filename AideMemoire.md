@@ -1496,7 +1496,38 @@ def fonction():
     #code
 ```
 
-# Générateurs
+# Générateurs - efficace pour les grosses données
+
+## Yield
+Yield est le return des générateurs. Il peut y en avoir plusieurs
+```python
+def mygenerator():
+    yield 1
+    yield 2
+    yield 3
+```
+
+## Obtenir les valeurs
+```python
+g = mygenerator()
+
+for i in g:
+    print(i)
+    
+# Output :
+# 1
+# 2
+# 3
+```
+
+## Parcourir les valeurs
+
+### vers l'avant
+```python
+next(g)
+
+# 
+```
 
 # Threading vs Multiprocessing
 
@@ -1511,3 +1542,13 @@ def fonction():
 # Shallow vs Deep Copying
 
 # Context Managers
+
+
+
+
+
+
+
+
+
+ 

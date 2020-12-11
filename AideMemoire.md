@@ -1369,7 +1369,132 @@ np.random.seed(1234)
 np.random.rand(3, 4)
 ```
 
-# Décorateurs
+# Décorateurs - Fonction qui permet d'ajouter des fonctionnalités à une autre fonction
+
+## Implémentation d'un décorateur
+```python
+def decorateur(fonction)
+    def wrapper():
+        print('Début')
+        fonction()
+        print('Fin')
+    return wrapper
+
+def print_name():
+    print('Joe')
+
+decorateur(print_name)
+
+# Output : 
+# Début
+# Joe
+# Fin
+```
+
+## Implémentation d'un décorateur avec @
+```python
+# On l'ajoute avec le symble @ au lieu de faire decorateur(print_name)
+
+@decorateur
+def print_name():
+    print('Joe')
+```
+
+## Implémentation d'un décorateur sur une fonction à paramètres
+
+```python
+def decorateur(fonction)
+    def wrapper(*args, **kwargs):
+        print('Début')
+        result = fonction(*args, **kwargs)
+        print('Fin')
+        return result
+    return wrapper
+
+def ajoute_5(x):
+    return x + 5
+
+decorateur(print_name)
+
+# Si l'on n'a pas *args et **kwargs, raise une TypeError(p.exemple "f() takes 3 positional arguments but 5 were given")
+```
+
+Ici, si l'on essaie de faire
+```python
+print(ajoute_5.__name__)
+```
+alors l'output sera "wrapper" et non "ajoute_5"
+Pour remédier à cela, on utilise functools
+
+## Functools - Module concernant les fonctions retournant d'autres fonctions
+
+### Importation
+```python
+import functools
+```
+
+### Utilisation
+```python
+def decorateur(fonction):
+    @functools.wraps(fonction)
+    def wrapper(*args, **kwargs):
+    ...
+    
+print(ajoute_5.__name__)
+```
+L'output sera alors "ajoute_5"
+
+## Paramètres
+En admettant que l'on veuille créer un décorateur qui répète un nombre n de fois la fonction
+
+### Appel
+```python
+@repeat(num_times=3):
+def greet(name):
+    print(f'Hello {name})
+```
+
+### Implémentation
+```python
+def repeat(num_times)
+    def decorateur():
+        @functools.wraps(func)
+        ...
+```
+
+On ajoute une couche de méthodes avec un paramètre
+Puis on finit la méthode normalement
+
+## Multiples décorateurs
+```python
+@decorateur1
+@decorateur2
+def fonction():
+    # Code
+```
+Les décorateurs sont stackables, ils s'exécutent dans l'ordre écrit dans le code
+
+## Classes de décorateurs
+
+### Implémentation
+ ```python
+class Compteur:
+    def __init__(self, fonction):
+        self.fonction = fonction
+        self.nb = 0
+    
+    def __inc__(self, *args, **kwargs):
+        self.nb += 1
+        print(self.nb)
+        return self.func(*args, **kwargs)     
+```
+
+### Appel
+```python
+@Compteur
+def fonction():
+    #code
+```
 
 # Générateurs
 
@@ -1386,117 +1511,3 @@ np.random.rand(3, 4)
 # Shallow vs Deep Copying
 
 # Context Managers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-d
